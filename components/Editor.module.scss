@@ -1,8 +1,31 @@
-.editor {
+.editorPage {
   width: 80vw;
   max-width: 45rem;
 
-  .window {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 1rem;
+
+  .inputBox {
+    input,
+    textarea {
+      display: block;
+      width: 100%;
+      margin: 0.3rem 0;
+    }
+
+    button {
+      font-size: 0.75em;
+    }
+  }
+
+  .buttonBox {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .editor {
     padding: 4rem;
     box-shadow: 0 0 2rem;
   }

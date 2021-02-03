@@ -45,6 +45,11 @@
         transition: transform 100ms ease-in;
       }
 
+      &.current {
+        pointer-events: none;
+        color: grey;
+      }
+
       &.current::after,
       &:hover::after {
         transform: scaleX(1);
