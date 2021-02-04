@@ -10,3 +10,80 @@ main {
   margin: 5vh auto;
   width: fit-content;
 }
+
+// Buttons {
+button {
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  border: none;
+  background-color: rgba(black, 0.3);
+  font-size: inherit;
+  display: inline-block;
+
+  position: relative;
+
+  z-index: 1;
+
+  &::before {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    // background: white;
+    content: "";
+    box-shadow: 0 0 0 0.15em black;
+
+    border-radius: inherit;
+    z-index: -1;
+
+    transform: scale(0);
+    transition: 100ms ease-in;
+  }
+
+  &:hover::before {
+    transform: scale(1);
+  }
+}
+
+//Tooltips
+[aria-label] {
+  position: relative;
+
+  &::after {
+    // positioning
+    position: absolute;
+    content: attr(aria-label);
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    // general styling
+    white-space: nowrap;
+    background-color: rgb(38, 38, 38);
+    color: white;
+    padding: 0.5em 0.8em;
+    border-radius: 0.5em;
+
+    // hide + animation
+    opacity: 0;
+    transition: opacity 100ms ease-in;
+    pointer-events: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      background-color: inherit;
+      top: 100%;
+      left: 50%;
+
+      width: 1em;
+      height: 1em;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  }
+
+  &:hover::after {
+    opacity: 100;
+  }
+}

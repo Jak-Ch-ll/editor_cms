@@ -8,9 +8,9 @@ interface ButtonProps {
 
 export const Button = ({ text, tooltip, onClick }: ButtonProps) => {
   return (
-    <button className={styles.button} onClick={onClick}>
+    <button className={styles.button} onClick={onClick} aria-label={tooltip}>
       {text}
-      {tooltip ? <div className={styles.tooltip}>{tooltip}</div> : ""}
+      {/* {tooltip ? <div className={styles.tooltip}>{tooltip}</div> : ""} */}
     </button>
   );
 };

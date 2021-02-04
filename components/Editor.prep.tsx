@@ -1,9 +1,8 @@
 // / <reference path="../types/@editorjs/header/index.d.ts" />
 import EditorJS, { EditorConfig } from "@editorjs/editorjs";
 import Header from "@editorjs/header";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { Button } from "./Button";
-import Editor from "./Editor";
 import styles from "./Editor.module.scss";
 
 enum LogLevels {
@@ -44,8 +43,8 @@ export default function EditorPrep() {
     () =>
       new EditorJS({
         holder: "editorjs",
-        autofocus: true,
-        minHeight: 0,
+        // autofocus: true,
+        // minHeight: 0,
         tools: {
           heading: {
             class: Header,
@@ -147,50 +146,53 @@ export default function EditorPrep() {
 
   return (
     <div className={styles.editorPage}>
-      <div className={styles.inputBox}>
-        <label htmlFor="editor__input__title">Title:</label>
-        <input
-          id="editorPage__title"
-          type="text"
-          value={fullData.title}
-          onChange={handleChange}
-          name="title"
-        />
-        <Button
-          text="Generate title"
-          tooltip="Click on a block in the editor and then this button"
-          onClick={generateTitle}
-        />
-      </div>
+      <details>
+        <summary>Advanced</summary>
+        <div className={styles.inputBox}>
+          <label htmlFor="editor__input__title">Title:</label>
+          <input
+            id="editorPage__title"
+            type="text"
+            value={fullData.title}
+            onChange={handleChange}
+            name="title"
+          />
+          <Button
+            text="Generate title"
+            tooltip="Click on a block in the editor and then this button"
+            onClick={generateTitle}
+          />
+        </div>
 
-      <div className={styles.inputBox}>
-        <label htmlFor="editor__input__preview">Preview Text:</label>
-        <textarea
-          onChange={handleChange}
-          name="previewText"
-          value={fullData.previewText}
-        ></textarea>
-        <Button
-          text="Generate preview text"
-          tooltip="Click on a block in the editor and then this button"
-          onClick={generatePreviewText}
-        />
-      </div>
+        <div className={styles.inputBox}>
+          <label htmlFor="editor__input__preview">Preview Text:</label>
+          <textarea
+            onChange={handleChange}
+            name="previewText"
+            value={fullData.previewText}
+          ></textarea>
+          <Button
+            text="Generate preview text"
+            tooltip="Click on a block in the editor and then this button"
+            onClick={generatePreviewText}
+          />
+        </div>
 
-      <div className={styles.inputBox}>
-        <label htmlFor="editorPage__title">URL: (must be unique)</label>
-        <input
-          type="text"
-          value={fullData.url}
-          onChange={handleChange}
-          name="url"
-        />
-        <Button
-          text="Generate URL"
-          tooltip="Generate from current title"
-          onClick={generateURL}
-        />
-      </div>
+        <div className={styles.inputBox}>
+          <label htmlFor="editorPage__title">URL: (must be unique)</label>
+          <input
+            type="text"
+            value={fullData.url}
+            onChange={handleChange}
+            name="url"
+          />
+          <Button
+            text="Generate URL"
+            tooltip="Generate from current title"
+            onClick={generateURL}
+          />
+        </div>
+      </details>
 
       <div className={styles.buttonBox}>
         <Button text="Save!" tooltip="Save article" onClick={saveData} />
