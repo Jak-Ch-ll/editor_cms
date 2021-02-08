@@ -5,11 +5,11 @@ import styles from "./Header.module.scss";
 export default function Header() {
   const navTargets = [
     {
-      url: "/blogposts",
-      text: "All blogposts",
+      url: "/articles",
+      text: "All articles",
     },
     {
-      url: "/blogposts/new",
+      url: "/articles/new",
       text: "Create New",
     },
   ];

@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "article" ALTER COLUMN "title" SET DEFAULT E'NO TITLE',
+ALTER COLUMN "preview_text" SET DEFAULT E'NO PREVIEW TEXT';
