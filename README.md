@@ -19,3 +19,5 @@ This will be my first "medium-sized" project. A CMS for blogs built with nextjs 
 * [Prisma](https://www.prisma.io/)
   * During testing a tried a few orms but got stuck with this one
   * Quite easy to use after a bit of setup
+* [Jest](https://jestjs.io/)
+ * I started to learn TDD and want to use it in practice
