@@ -12,13 +12,19 @@ main {
 }
 
 // Buttons {
-button {
+.button {
   padding: 0.5em 1em;
   border-radius: 0.5em;
   border: none;
-  background-color: rgba(black, 0.3);
+
+  color: white;
+  background-color: rgba(black, 0.9);
+
   font-size: inherit;
+  font-family: inherit;
   display: inline-block;
+
+  text-decoration: none;
 
   position: relative;
 
@@ -30,9 +36,9 @@ button {
     width: 100%;
     top: 0;
     left: 0;
-    // background: white;
     content: "";
-    box-shadow: 0 0 0 0.15em black;
+
+    background-color: rgb(66, 66, 66);
 
     border-radius: inherit;
     z-index: -1;
@@ -87,3 +93,7 @@ button {
     opacity: 100;
   }
 }
+
+// .ce-header[contentEditable="true"][data-placeholder]::before {
+//   pointer-events: none;
+// }

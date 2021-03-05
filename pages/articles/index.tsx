@@ -33,20 +33,36 @@ export default function Blogposts({
 
   const listArticles = articles.map(article => {
     return (
-      <li key={article.id}>
-        <h2>{article.title}</h2>
-        <p>{article.previewText}</p>
-        <Link href={`/api/articles/${article.id}/edit`}>
-          <a>Edit</a>
-        </Link>
-        <button onClick={() => deleteArticle(article.id)}>Delete</button>
-      </li>
+      <tr key={article.id}>
+        <td>{article.title}</td>
+        <td>{article.previewText}</td>
+        <td>
+          <Link href={`/articles/${article.id}/edit`}>
+            <a className="button">Edit</a>
+          </Link>
+        </td>
+        <td>
+          <button className="button" onClick={() => deleteArticle(article.id)}>
+            Delete
+          </button>
+        </td>
+      </tr>
     );
   });
 
   return (
     <main>
-      <ul>{listArticles}</ul>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Preview Text</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>{listArticles}</tbody>
+      </table>
     </main>
   );
 }

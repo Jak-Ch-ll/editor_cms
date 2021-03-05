@@ -31,6 +31,7 @@ export default function Editor({
 }: EditorProps) {
   let editor: EditorJS;
   let onSave: () => EditorData;
+  let onChange: () => void;
 
   const save = async () => {
     try {
@@ -60,24 +61,28 @@ export default function Editor({
     }
   };
 
-  const onChange = () => {
-    onSave();
+  const change = () => {
+    onChange();
   };
 
   return (
     <div className={styles.editorPage}>
       <button onClick={save}>Save!</button>
+
       <EditorConf
         data={article.content}
         setEditor={instance => {
           editor = instance;
         }}
-        onChange={onChange}
+        onChange={change}
       />
       <EditorMeta
         editorData={article}
         setOnSave={saveFunc => {
           onSave = saveFunc;
+        }}
+        setOnChange={changeFunc => {
+          onChange = changeFunc;
         }}
       />
     </div>

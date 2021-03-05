@@ -1,6 +1,7 @@
 // / <reference path="../types/@editorjs/header/index.d.ts" />
 import EditorJS, { OutputData } from "@editorjs/editorjs";
 import Header from "@editorjs/header";
+import { type } from "os";
 import { Dispatch, useEffect, useState } from "react";
 import styles from "./Editor.module.scss";
 
@@ -15,6 +16,25 @@ export default function EditorConf({
   setEditor,
   onChange,
 }: EditorConfProps) {
+  // default data
+  const defaultData: OutputData = {
+    blocks: [
+      {
+        type: "heading",
+        data: {
+          text: "",
+          level: 1,
+        },
+      },
+      {
+        type: "paragraph",
+        data: {
+          text: "",
+        },
+      },
+    ],
+  };
+
   // prepare Editor
   const [editor] = useState(
     () =>
@@ -22,18 +42,22 @@ export default function EditorConf({
         holder: "editorjs",
         // autofocus: true,
         // minHeight: 0,
-        data,
+        data: data || defaultData,
         tools: {
           heading: {
             class: Header,
             config: {
-              placeholder: "Create a heading",
+              placeholder: "Create your heading",
               levels: [1, 2, 3],
               defaultLevel: 2,
             },
+            inlineToolbar: true,
           },
         },
         onChange: onChange,
+        onReady: () => {
+          editor.caret.setToLastBlock();
+        },
       })
   );
 
